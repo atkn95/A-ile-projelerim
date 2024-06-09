@@ -1,0 +1,320 @@
+/* Genel Stil */
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: #00796b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#theme-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+#theme-button:hover {
+    background-color: #003d33;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+}
+
+.calculator, .camera-section, .history, .statistics, .feedback {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    width: 100%;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+body.dark .calculator,
+body.dark .camera-section,
+body.dark .history,
+body.dark .statistics,
+body.dark .feedback {
+    background-color: #424242;
+    color: #f0f0f0;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.6s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: -1;
+}
+
+button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+button:hover {
+    background-color: #00695c;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+body.dark button {
+    background-color: #4db6ac;
+}
+
+body.dark button:hover {
+    background-color: #00897b;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.history {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.history h2 {
+    font-size: 
+    20px;
+}
+
+#historyList {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+body.dark #historyList {
+    border-top: 1px solid #777;
+}
+
+#historyList li {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+body.dark #historyList li {
+    border-bottom: 1px solid #777;
+}
+
+#historyList li.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.history button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e57373;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.history button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.6s;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: -1;
+}
+
+.history button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: 0s;
+}
+
+.history button:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.statistics {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.statistics h2 {
+    font-size: 20px;
+}
+
+.feedback {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.feedback h2 {
+    font-size: 20px;
+}
+
+#feedbackForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#feedbackText {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+#feedbackForm button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+#feedbackForm button:hover {
+    background-color: #0277bd;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+body.dark #feedbackForm button {
+    background-color: #4db6ac;
+}
+
+body.dark #feedbackForm button:hover {
+    background-color: #00897b;
+}
+
+.camera-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.camera-section video {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+.ocr-result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #00796b;
+}

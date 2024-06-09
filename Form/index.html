@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş Hesap Makinesi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gelişmiş Hesap Makinesi</h1>
+        <button id="theme-button" onclick="toggleTheme()">Koyu Tema</button>
+    </header>
+    <main>
+        <section class="calculator">
+            <div class="input-group">
+                <label for="number1">Sayı 1:</label>
+                <input type="number" id="number1" placeholder="Bir sayı girin">
+            </div>
+            <div class="input-group">
+                <label for="number2">Sayı 2:</label>
+                <input type="number" id="number2" placeholder="Bir sayı girin">
+            </div>
+            <div class="button-group">
+                <button onclick="hesapla('topla')">Topla</button>
+                <button onclick="hesapla('cikar')">Çıkar</button>
+                <button onclick="hesapla('carp')">Çarp</button>
+                <button onclick="hesapla('bol')">Böl</button>
+                <button onclick="hesapla('karekök')">Karekök</button>
+                <button onclick="hesapla('us')">Üs</button>
+                <button onclick="hesapla('mod')">Mod</button>
+                <button onclick="hesapla('sin')">Sin</button>
+                <button onclick="hesapla('cos')">Cos</button>
+                <button onclick="hesapla('log')">Log</button>
+                <button onclick="hesapla('faktoriyel')">Faktöriyel</button>
+            </div>
+            <div id="result" class="result"></div>
+        </section>
+        
+        <section id="camera-section" class="camera-section">
+            <h2>Kameradan Soru Algılama</h2>
+            <div id="camera" onclick="initializeCamera();">
+                <span class="shade"></span>
+            </div>
+            <video id="camera-video" autoplay playsinline style="display:none;"></video>
+            <button onclick="captureImage()">Görüntü Al</button>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <div id="ocr-result" class="ocr-result"></div>
+        </section>
+
+        <section id="history" class="history">
+            <h2>İşlem Geçmişi</h2>
+            <ul id="historyList"></ul>
+            <button onclick="temizleGecmis()">Geçmişi Temizle</button>
+        </section>
+
+        <section id="statistics" class="statistics">
+            <h2>İstatistikler</h2>
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </section>
+
+        <section id="feedback" class="feedback">
+            <h2>Geri Bildirim</h2>
+            <form id="feedbackForm">
+                <textarea id="feedbackText" placeholder="Geri bildiriminizi buraya yazın..."></textarea>
+                <button type="button" onclick="submitFeedback()">Gönder</button>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
